@@ -1,0 +1,5 @@
+# Files SOPS encrypts, and to whom: sglre6355's GPG key, whose encryption
+# subkey GnuPG picks.
+creation_rules:
+  - path_regex: (^|/)secrets\.yaml$
+    pgp: CE5CFF551F8065B6772866B7435B3BD0542A1D6B
