@@ -7,7 +7,7 @@ module "zone" {
 }
 
 module "zero_trust" {
-  source = "./modules/zero-trust"
+  source = "./zero-trust"
 
   account_id = var.account_id
 }

@@ -52,3 +52,8 @@ shared state locking, so only one person should apply changes at a time.
 
 Pull the latest changes before applying. After a successful apply, commit and push the updated
 configuration and state so the next person starts from the current version.
+
+## Layout
+
+`terraform/` contains the root module. Reusable modules live in `terraform/modules/`. Configuration
+used only once lives in its own directory directly under `terraform/`.
