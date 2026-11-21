@@ -4,6 +4,13 @@ zones = [
   "sglre6355.net",
 ]
 
+discord_application_id = "1573522594018369676"
+
+discord_oidc = {
+  zone     = "sglre6355.net"
+  hostname = "discord-oidc.sglre6355.net"
+}
+
 ilink_web = {
   zone     = "sglre6355.net"
   hostname = "camera.sglre6355.net"

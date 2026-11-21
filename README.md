@@ -1,7 +1,6 @@
 # cloudflare-config
 
-Manage Cloudflare domains and shared Zero Trust settings with OpenTofu. This repository currently
-configures domain zones and email sign-in with a one-time PIN for Cloudflare Access.
+Manage Cloudflare domains and shared Zero Trust settings with OpenTofu.
 
 ## Getting started
 
@@ -40,6 +39,8 @@ Run OpenTofu through `secretspec run --` so it receives the credentials defined 
   SecretSpec reads the OAuth token from the CLI on each run. No separate API token is configured.
 - `TF_VAR_state_passphrase` encrypts OpenTofu state and saved plan files. The passphrase is stored
   in `secrets.yaml`, which SOPS encrypts for the GPG key specified in `.sops.yaml`.
+
+Modules that need further secrets describe them in their own `README.md`.
 
 On another machine, clone the repository, make the private GPG key available, and sign in with
 `cf auth login`. Without access to the passphrase, you cannot decrypt the existing state. The

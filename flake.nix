@@ -14,6 +14,8 @@
         pkgs = nixpkgs.legacyPackages.${system};
       in
       {
+        packages.discord-oidc-worker = pkgs.callPackage ./nix/discord-oidc-worker.nix { };
+
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
             opentofu
@@ -21,6 +23,7 @@
             sops
             cf
             jq
+            nodejs
             rumdl
           ];
         };
