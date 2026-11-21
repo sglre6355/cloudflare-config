@@ -13,3 +13,12 @@ variable "zones" {
   description = "Every domain on the account."
   type        = set(string)
 }
+
+variable "ilink_web" {
+  description = "Cloudflare zone, public hostname, and permitted email addresses for ilink-web."
+  type = object({
+    zone           = string
+    hostname       = string
+    allowed_emails = set(string)
+  })
+}
