@@ -1,7 +1,9 @@
 # Cloudflare infrastructure for ilink-web (https://github.com/sglre6355/ilink-web).
 #
-# Cloudflare Tunnel exposes the web application, and Cloudflare Access restricts
-# access to approved email addresses. TURN relays video traffic separately.
+# Cloudflare Tunnel exposes the web application, and Cloudflare Access
+# restricts access to members of approved Access groups.
+#
+# TURN relays video traffic separately.
 
 resource "cloudflare_zero_trust_tunnel_cloudflared" "this" {
   account_id = var.account_id
@@ -27,7 +29,7 @@ resource "cloudflare_zero_trust_access_policy" "this" {
   account_id = var.account_id
   name       = "ilink-web viewers"
   decision   = "allow"
-  include    = [for email in var.allowed_emails : { email = { email = email } }]
+  include    = [for id in var.allowed_group_ids : { group = { id = id } }]
 }
 
 # Require authentication through Cloudflare Access.

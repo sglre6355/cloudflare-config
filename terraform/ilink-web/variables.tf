@@ -13,9 +13,14 @@ variable "hostname" {
   type        = string
 }
 
-variable "allowed_emails" {
-  description = "Email addresses permitted to access ilink-web."
+variable "allowed_group_ids" {
+  description = "Cloudflare Access group IDs whose members are permitted to access ilink-web."
   type        = set(string)
+
+  validation {
+    condition     = length(var.allowed_group_ids) > 0
+    error_message = "Provide at least one Access group ID."
+  }
 }
 
 variable "identity_provider_id" {

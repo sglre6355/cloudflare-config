@@ -14,7 +14,10 @@ discord_oidc = {
 ilink_web = {
   zone     = "sglre6355.net"
   hostname = "camera.sglre6355.net"
-  allowed_emails = [
-    "sglre6355@gmail.com",
-  ]
+  allowed_discord_users = {
+    ids = ["621355242201546758"]
+    roles = {
+      "1067297430208528435" = ["1324906526363881552"]
+    }
+  }
 }

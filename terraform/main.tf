@@ -29,6 +29,10 @@ module "discord_oidc" {
   application_id     = var.discord_application_id
   application_secret = var.discord_application_secret
   signing_key        = var.discord_oidc_signing_key
+
+  user_groups = {
+    "ilink-web viewers" = var.ilink_web.allowed_discord_users
+  }
 }
 
 module "ilink_web" {
@@ -37,6 +41,6 @@ module "ilink_web" {
   account_id           = var.account_id
   zone_id              = module.zone[var.ilink_web.zone].id
   hostname             = var.ilink_web.hostname
-  allowed_emails       = var.ilink_web.allowed_emails
-  identity_provider_id = module.zero_trust.one_time_pin_id
+  allowed_group_ids    = [module.discord_oidc.user_group_ids["ilink-web viewers"]]
+  identity_provider_id = module.discord_oidc.identity_provider_id
 }

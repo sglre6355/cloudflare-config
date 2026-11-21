@@ -40,10 +40,13 @@ variable "discord_oidc_signing_key" {
 }
 
 variable "ilink_web" {
-  description = "Cloudflare zone, public hostname, and permitted email addresses for ilink-web."
+  description = "Cloudflare zone, public hostname, and approved Discord users and roles for ilink-web."
   type = object({
-    zone           = string
-    hostname       = string
-    allowed_emails = set(string)
+    zone     = string
+    hostname = string
+    allowed_discord_users = object({
+      ids   = optional(set(string), [])
+      roles = optional(map(set(string)), {})
+    })
   })
 }
