@@ -4,7 +4,7 @@ variable "account_id" {
 }
 
 variable "name" {
-  description = "Name used for the Cloudflare Worker and its KV namespace."
+  description = "Name used for the Cloudflare Worker, its KV namespace and the Access identity provider."
   type        = string
 }
 

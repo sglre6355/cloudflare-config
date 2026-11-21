@@ -3,9 +3,9 @@ output "zone_name_servers" {
   value       = { for name, zone in module.zone : name => zone.name_servers }
 }
 
-output "discord_oidc_redirect_uri" {
-  description = "OAuth2 redirect URI to register in the Discord application settings."
-  value       = module.discord_oidc.redirect_uri
+output "ilink_web_discord_oidc_redirect_uri" {
+  description = "OAuth2 redirect URI to register in ilink-web's Discord application settings."
+  value       = module.ilink_web.discord_oidc_redirect_uri
 }
 
 output "ilink_web" {

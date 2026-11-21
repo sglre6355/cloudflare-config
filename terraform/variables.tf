@@ -14,39 +14,27 @@ variable "zones" {
   type        = set(string)
 }
 
-variable "discord_application_id" {
-  description = "ID of the Discord application used for signing in to Cloudflare Access."
-  type        = string
-}
-
-variable "discord_application_secret" {
-  description = "OAuth2 client secret for the Discord application."
-  type        = string
-  sensitive   = true
-}
-
-variable "discord_oidc" {
-  description = "Cloudflare zone and public hostname for the Discord OIDC Worker."
-  type = object({
-    zone     = string
-    hostname = string
-  })
-}
-
-variable "discord_oidc_signing_key" {
-  description = "Private RSA key in JWK format used by the Discord OIDC Worker to sign ID tokens. Must include a `kid` (key ID)."
-  type        = string
-  sensitive   = true
-}
-
 variable "ilink_web" {
-  description = "Cloudflare zone, public hostname, and approved Discord users and roles for ilink-web."
+  description = "Cloudflare zone, public hostname, Discord application ID, and approved Discord users and roles for ilink-web."
   type = object({
-    zone     = string
-    hostname = string
+    zone                   = string
+    hostname               = string
+    discord_application_id = string
     allowed_discord_users = object({
       ids   = optional(set(string), [])
       roles = optional(map(set(string)), {})
     })
   })
+}
+
+variable "ilink_web_discord_application_secret" {
+  description = "OAuth2 client secret for ilink-web's Discord application."
+  type        = string
+  sensitive   = true
+}
+
+variable "ilink_web_discord_oidc_signing_key" {
+  description = "Private RSA key in JWK format used by ilink-web's Discord OIDC Worker to sign ID tokens. Must include a `kid` (key ID)."
+  type        = string
+  sensitive   = true
 }

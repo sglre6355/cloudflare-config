@@ -68,7 +68,7 @@ resource "cloudflare_workers_custom_domain" "this" {
 
 resource "cloudflare_zero_trust_access_identity_provider" "this" {
   account_id = var.account_id
-  name       = "Discord"
+  name       = var.name
   type       = "oidc"
   config = {
     client_id     = var.application_id

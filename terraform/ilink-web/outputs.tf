@@ -1,3 +1,8 @@
+output "discord_oidc_redirect_uri" {
+  description = "OAuth2 redirect URI to register in the Discord application settings."
+  value       = module.discord_oidc.redirect_uri
+}
+
 output "tunnel_token" {
   description = "Cloudflare Tunnel token for the cloudflared `TUNNEL_TOKEN` environment variable."
   value       = data.cloudflare_zero_trust_tunnel_cloudflared_token.this.token
